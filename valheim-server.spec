@@ -1,4 +1,4 @@
-%define name valheim
+%define name valheim-server
 %define version 0.0.7
 %define release 1
 %define user_home /valheim
