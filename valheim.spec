@@ -13,7 +13,7 @@ Summary:	Valheim game server
 
 License:	MIT
 URL:		https://github.com/bostrt/valheim-server
-Source0:    https://github.com/bostrt/valheim-server/archive/%{version}.tar.gz
+Source0:    https://github.com/bostrt/valheim-server/archive/%{name}-%{version}.tar.gz
 
 BuildArch: x86_64
 
