@@ -1,6 +1,6 @@
 %define name valheim-server
 %define version 0.0.7
-%define release 2
+%define release 3
 %define user_home /valheim
 
 %global debug_package %{nil}
