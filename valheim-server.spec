@@ -43,7 +43,7 @@ fi
 
 
 %prep
-%setup -q -n %{name}-server-%{version}
+%setup -q -n %{name}-%{version}
 
 
 %install
