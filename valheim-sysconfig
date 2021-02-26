@@ -1,4 +1,5 @@
 NAME="changeme"
 WORLD="changeme"
 PASSWORD="changeme2"
-BACKUP_KEEP_DAYS=5 # Number of days to keep backups
+# Number of days to keep backups
+BACKUP_KEEP_DAYS="5"
