@@ -1,0 +1,12 @@
+[Unit]
+Description=Valheim service backup
+
+[Service]
+Type=oneshot
+User=valheim
+EnvironmentFile=/etc/sysconfig/valheim
+WorkingDirectory=/valheim/Game
+ExecStart=/valheim/backup.sh
+
+[Install]
+WantedBy=multi-user.target

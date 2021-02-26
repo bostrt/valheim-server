@@ -1,0 +1,20 @@
+[Unit]
+Description=Valheim service
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=forking
+PIDFile=/run/valheim/valheim.pid
+EnvironmentFile=/etc/sysconfig/valheim
+Restart=on-failure
+RestartSec=10
+User=valheim
+PermissionsStartOnly=true
+WorkingDirectory=/valheim/Game
+ExecStartPre=/usr/bin/mkdir -p /run/valheim
+ExecStartPre=/usr/bin/chown valheim:valheim /run/valheim
+ExecStart=/valheim/Game/start_valheim.sh
+
+[Install]
+WantedBy=multi-user.target
