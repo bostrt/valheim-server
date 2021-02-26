@@ -53,7 +53,7 @@ install -p -D -m 644 valheim-backup.service  %{buildroot}%{_unitdir}/valheim-bac
 install -p -D -m 644 valheim-backup.timer  %{buildroot}%{_unitdir}/valheim-backup.timer
 install -p -D -m 644 valheim-backup.timer  %{buildroot}%{_unitdir}/valheim-backup.timer
 install -p -D -m 644 50-valheim.preset  %{buildroot}%{_presetdir}/50-valheim.preset
-install -p -D -m 644 valheim-sysconfig %{buildroot}%{_sysconfdir}/valheim
+install -p -D -m 644 valheim-sysconfig %{buildroot}%{_sysconfdir}/sysconfig/valheim
 
 install -p -D -m 744 start_valheim.sh %{buildroot}/valheim/Game/start_valheim.sh
 install -p -D -m 744 backup.sh %{buildroot}/valheim/backup.sh
@@ -86,7 +86,7 @@ fi
 %{_unitdir}/valheim-backup.service
 %{_unitdir}/valheim-backup.timer
 %{_presetdir}/50-valheim.preset
-%{_sysconfdir}/valheim
+%{_sysconfdir}/sysconfig/valheim
 %attr(-,valheim,valheim) %{user_home}/backup.sh
 %attr(-,valheim,valheim) %{user_home}/update.sh
 %attr(-,valheim,valheim) %{user_home}/Game
