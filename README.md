@@ -1,49 +1,63 @@
-# Valheim Dedicated Server - Manual Setup
+# Valheim Dedicated Server for Fedora/RHEL/Centos
 
-## Prereqs for steamcmd
+# Installation and Initial Setup
+
+### Package
 ```bash
-$ dnf install glibc.i686 libstdc++.i686
+$ dnf copr enable bostrt/valheim 
+$ dnf install valheim-server
 ```
 
-## User setup
-```
-# useradd -d /valheim valheim
-# sudo su - valheim
-# mkdir Game
+### Configure Your Server
 
-# semanage fcontext -a -t usr_t '/valheim(/.*)?'
-# restorecon -RFv /valheim/
-```
+```bash
+$ vi /etc/sysconfig/valheim
 
-# Configure services
-
-- Sysconfig `valheim-sysconfig -> /etc/sysconfig/valheim`
-- Systemd unit `valheim.service`
-- Systemd backup unit `valheim-backup.service`
-- Systemd backup timer `valheim-backup.timer`
-- Create Update and Install script `/valheim/update.sh`
-- Create backup script `/valheim/backup.sh`.
-- Create `start_valheim.sh`
-- Add, reload, start
-```
-# systemctl daemon-reload
-# systemctl start valheim.service
-# systemctl start valheim-backup.timer
-# systemctl enable valheim-backup.timer
+NAME="my-server"
+WORLD="valheim-rocks"
+PASSWORD="t0psecret"
+# Number of days to keep backups
+BACKUP_KEEP_DAYS="5"
 ```
 
-- Open ports
-```
+### Open Ports
+```bash
 # firewall-cmd --add-port=2456/udp --add-port=2457/udp --add-port=2458/udp --add-port=2456/tcp --add-port=2457/tcp --add-port=2458/tcp --permanent
 # firewall-cmd --reload 
 ```
 
-- Port forward on Router
+**NOTE**: Remember to forward ports on your router!
 
-# Start daemon and stuff
+### Start the Server
 
-This will automatically update Valheim.
-
+```bash
+$ systemctl start valheim
 ```
-# systemctl start valheim
+
+🚀 You are done! 
+
+See below for more server management tips.
+
+
+
+# Server Management
+
+## Services
+
+```bash
+$ systemctl start valheim  # Start the dedicated game server
+$ systemctl stop valheim   # Stop it
 ```
+
+## Backups
+
+Backups will start running automatically after package installation.  
+
+```bash
+$ systemctl status valheim-backup.timer  # Check the backups are active
+$ ls -la /valheim/backups                # Check backups are present
+```
+
+## Steam Updates
+
+Steam update checks are performed each time the service is started.
